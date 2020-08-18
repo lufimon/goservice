@@ -23,5 +23,5 @@ func main() {
 	defer Config.DB.Close()
 	Config.DB.AutoMigrate(&Models.User{})
 	r := Routers.SetupRouter()
-	r.Run(":" + os.Getenv("PORT"))
+	r.Run(os.Getenv("IP") + ":" + os.Getenv("PORT"))
 }
