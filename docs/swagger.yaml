@@ -1,0 +1,84 @@
+basePath: /api/
+definitions:
+  Models.Contact:
+    properties:
+      facebook:
+        example: Tam Tanuphong Phoemtaweesantisuh
+        type: string
+      instagram:
+        example: '@t2enith'
+        type: string
+      lineId:
+        example: '@mawnoizz'
+        type: string
+    type: object
+  Models.Users:
+    properties:
+      age:
+        example: 26
+        type: integer
+      birthDay:
+        example: 02/10/2536
+        type: string
+      contact:
+        $ref: '#/definitions/Models.Contact'
+      firstName:
+        example: Tanuphong
+        type: string
+      lastName:
+        example: Phoemtaweesantisuh
+        type: string
+      userId:
+        example: 1
+        type: integer
+    type: object
+host: localhost:8089
+info:
+  contact:
+    email: tanuphong.p@hotmail.com
+    name: API Support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /user:
+    get:
+      consumes:
+      - application/json
+      description: Get detail user of all
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Models.Users'
+            type: array
+        "400": {}
+        "404": {}
+        "500": {}
+      summary: Get detail user of all
+  /user/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get detail user by id
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Models.Users'
+            type: array
+        "400": {}
+        "404": {}
+        "500": {}
+      summary: Get detail user by id
+swagger: "2.0"

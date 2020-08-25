@@ -1,0 +1,120 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server celler server.",
+        "title": "Swagger Example API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "email": "tanuphong.p@hotmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8089",
+    "basePath": "/api/",
+    "paths": {
+        "/user": {
+            "get": {
+                "description": "Get detail user of all",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get detail user of all",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Models.Users"
+                            }
+                        }
+                    },
+                    "400": {},
+                    "404": {},
+                    "500": {}
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "description": "Get detail user by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get detail user by id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Models.Users"
+                            }
+                        }
+                    },
+                    "400": {},
+                    "404": {},
+                    "500": {}
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Models.Contact": {
+            "type": "object",
+            "properties": {
+                "facebook": {
+                    "type": "string",
+                    "example": "Tam Tanuphong Phoemtaweesantisuh"
+                },
+                "instagram": {
+                    "type": "string",
+                    "example": "@t2enith"
+                },
+                "lineId": {
+                    "type": "string",
+                    "example": "@mawnoizz"
+                }
+            }
+        },
+        "Models.Users": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 26
+                },
+                "birthDay": {
+                    "type": "string",
+                    "example": "02/10/2536"
+                },
+                "contact": {
+                    "$ref": "#/definitions/Models.Contact"
+                },
+                "firstName": {
+                    "type": "string",
+                    "example": "Tanuphong"
+                },
+                "lastName": {
+                    "type": "string",
+                    "example": "Phoemtaweesantisuh"
+                },
+                "userId": {
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        }
+    }
+}

@@ -8,6 +8,16 @@ import (
 	"strconv"
 )
 
+//GetAllUsers godoc
+//@Summary Get detail user of all
+//@Description Get detail user of all
+//@Accept json
+//@Produce json
+//@Success 200 {array} Models.Users
+//@Failure 400
+//@Failure 404
+//@Failure 500
+//@Router /user [get]
 func GetAllUsers(c *gin.Context) {
 	var users []Models.User
 	var response []Models.Users
@@ -34,6 +44,17 @@ func GetAllUsers(c *gin.Context) {
 	}
 }
 
+//GetUserById godoc
+//@Summary Get detail user by id
+//@Description Get detail user by id
+//@Accept json
+//@Produce json
+//Param id path int true "User ID"
+//@Success 200 {array} Models.Users
+//@Failure 400
+//@Failure 404
+//@Failure 500
+//@Router /user/{id} [get]
 func GetUserById(c *gin.Context) {
 	id, e := strconv.ParseUint(c.Params.ByName("id"), 10, 64)
 	if e == nil {

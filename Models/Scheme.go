@@ -18,18 +18,18 @@ type User struct {
 }
 
 type Users struct {
-	ID        uint    `json:"userId"`
-	FirstName string  `json:"firstName"`
-	LastName  string  `json:"lastName"`
-	BirthDay  string  `json:"birthDay"`
-	Age       int64   `json:"age"`
+	ID        uint    `json:"userId" example:"1"`
+	FirstName string  `json:"firstName" example:"Tanuphong"`
+	LastName  string  `json:"lastName" example:"Phoemtaweesantisuh"`
+	BirthDay  string  `json:"birthDay" example:"02/10/2536"`
+	Age       int64   `json:"age" example:"26"`
 	Contact   Contact `json:"contact"`
 }
 
 type Contact struct {
-	Facebook  string `json:"facebook"`
-	LineId    string `json:"lineId"`
-	Instagram string `json:"instagram"`
+	Facebook  string `json:"facebook" example:"Tam Tanuphong Phoemtaweesantisuh"`
+	LineId    string `json:"lineId" example:"@mawnoizz"`
+	Instagram string `json:"instagram" example:"@t2enith"`
 }
 
 func (u *User) TableName() string {
