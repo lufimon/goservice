@@ -14,6 +14,7 @@ import (
 //@Accept json
 //@Produce json
 //@Success 200 {array} Models.Users
+//@Success 204
 //@Failure 400
 //@Failure 404
 //@Failure 500
@@ -37,8 +38,13 @@ func GetAllUsers(c *gin.Context) {
 		response = append(response, u)
 	}
 	if err != nil {
-		fmt.Println("ERROR :", err)
-		c.Status(http.StatusInternalServerError)
+		if err.Error() == "record not found" {
+			fmt.Println("RECORD NOT FOUND :", err)
+			c.Status(http.StatusNoContent)
+		} else {
+			fmt.Println("ERROR :", err)
+			c.Status(http.StatusInternalServerError)
+		}
 	} else {
 		c.JSON(http.StatusOK, response)
 	}
@@ -51,6 +57,7 @@ func GetAllUsers(c *gin.Context) {
 //@Produce json
 //Param id path int true "User ID"
 //@Success 200 {array} Models.Users
+//@Success 204
 //@Failure 400
 //@Failure 404
 //@Failure 500
@@ -74,8 +81,13 @@ func GetUserById(c *gin.Context) {
 	contact.Instagram = user.Instagram
 	response.Contact = contact
 	if err != nil {
-		fmt.Println("ERROR :", err)
-		c.Status(http.StatusInternalServerError)
+		if err.Error() == "record not found" {
+			fmt.Println("RECORD NOT FOUND :", err)
+			c.Status(http.StatusNoContent)
+		} else {
+			fmt.Println("ERROR :", err)
+			c.Status(http.StatusInternalServerError)
+		}
 	} else {
 		c.JSON(http.StatusOK, response)
 	}
